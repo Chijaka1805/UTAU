@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>千坂 - UTAU音源配布所</title>
+    <link rel="icon" href="webicon.jpg">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <h1 id="top">千坂 - UTAU音源配布所</h1>
+    <div id="menuground">
+        <div id="menu">
+            <a class="tab" href="#top">概要</a>
+            <a class="tab" href="#shokai">UTAU音源紹介</a>
+            <a class="tab" href="#kiyaku">利用規約</a>
+            <a class="tab" href="#minigame">ミニゲーム</a>
+            <a class="tab" href="#toiawase">お問い合わせ</a>
+            <a class="tab" href="#link">リンク</a>
+        </div>
+    </div>
+
+    <main>
+
+        <div id="gaiyou">
+            <h2>概要</h2>
+            <div id="gaiyoudetail">
+                <p>当ページはちじゃか(@Chijaka1805)によるUTAU音源配布ページです。<br>現在は「Proto-C1805」を配布しております。</p>
+                <div id="rireki">
+                    <p>更新履歴</p>
+                    <p>2026/08/20 ページ開設・「Proto-C1805」配布開始</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="shokai">
+            <h2>UTAU音源紹介</h2>
+            <div id="UTAUlist">
+                <!-- ここにキャラ一覧が入る -->
+            </div>
+            <div class="UTAUdetail" id="UTAUdetail">
+                <!-- ここに詳細が入る -->
+            </div>
+            <script>
+                const UTAUdata = [
+                    {
+                        name: "Proto-C1805",
+                        ruby: "",
+                        face: "Proto-C1805-icon.png",
+                        body: "Proto-C1805.png",
+                        samplevoice: "Proto-C1805.wav",
+                        demonico: "https://nicovideo.jp/user/129120560",
+                        demotube: "https://youtube.com/@Chijaka1805",
+                        profile: `身長　：151㎝
+年齢　：14歳程度の外見
+誕生日：2026/08/20
+性格　：自己評価が低く攻撃的`,
+                        setsumei: `Proto-C1805（プロト-シーイチハチゼロゴ）は、歌声合成ツール「UTAU」用の試作音源です。
+現在は単独音が配布されています。
+未知の物質から作られた人工生命体であり、体に電気を流すことで動いています。
+首元にケーブルの差し込み口があり、そこから充電が可能です。約8時間の充電で、おおよそ16時間活動することができます。
+
+声・原音設定・立ち絵：ちじゃか`
+                    } //同じフォーマットで増やせば増える
+                ];
+                const UTAUlistEl = document.getElementById("UTAUlist");
+                const UTAUdetailEl = document.getElementById("UTAUdetail");
+
+                UTAUdata.forEach((sentakuUTAU, number) => {
+                    const div = document.createElement("div");
+                    div.className = "UTAUitem";
+                    div.dataset.utaunumber = number;
+                    div.innerHTML = `
+                        <img src="${sentakuUTAU.face}" alt="${sentakuUTAU.name}">
+                        <span>${sentakuUTAU.name}</span>
+                        `;
+                    div.addEventListener("click", () => showUTAUDetail(number));
+                    UTAUlistEl.appendChild(div);
+                });
+
+                function showUTAUDetail(index) {
+                    const selectedUTAU = UTAUdata[index];
+                    UTAUdetailEl.innerHTML = `
+                        <div class="UTAUdetailnakami">
+                        <img src="${selectedUTAU.body}" alt="${selectedUTAU.name}">
+                            <div class="UTAUtext">
+                                <div class="line">
+                                    <h3><ruby>${selectedUTAU.name}<rp>(</rp><rt>${selectedUTAU.ruby}</rt><rp>)</rp></ruby></h3>
+                                </div>
+                                <div class="line">
+                                    <p>${selectedUTAU.profile}</p>
+                                </div>
+                                <div class="line">
+                                    <p>${selectedUTAU.setsumei}</p>
+                                </div>
+                                <figure>
+                                    <figcaption>デモ歌唱：</figcaption>
+                                    <audio controls src="${selectedUTAU.samplevoice}"></audio>
+                                    <p>公式デモソング：<a href="${selectedUTAU.demonico}">niconico</a> <a href="${selectedUTAU.demotube}">YouTube</a></p>
+                                </figure>
+                            </div>
+                        </div>
+                        `;
+
+                    document.querySelectorAll(".UTAUitem").forEach((youso) => {
+                        (youso).classList.remove("active");
+                    });
+                    document.querySelector(`[data-utaunumber="${index}"]`).classList.add("active");
+                }
+
+                showUTAUDetail(0);
+            </script>
+        </div>
+
+        <div id="kiyaku">
+            <h2>利用規約</h2>
+            <div>
+                <h3>■はじめに</h3>
+                <p>当ページの音源・キャラクターに関する権利は、作者である「ちじゃか」に帰属します。<br>当UTAU音源を使用した場合、こちらの利用規約を同意し、承認したものとみなします。</p>
+            </div>
+            <div>
+                <h3>■音源利用規約</h3>
+                <div>
+                    <p><b>1.許諾事項</b></p>
+                    <ul>
+                        <li>個人が当音源を用い制作した楽曲等を、動画投稿サイトやSNSに投稿すること</li>
+                        <li>個人が当音源を用い制作した同人CDを配布、頒布、販売すること</li>
+                        <li>個人が当音源を用い制作した楽曲を、音楽配信サイトで有料配信すること</li>
+                        <li>個人が音源を用い制作した動画から、収益を得ること</li>
+                        <li>個人が当音源の音源名を明記せずに、当音源を使用すること</li>
+                        <li>当音源を当音源以外のキャラクターに使用すること</li>
+                        <li>当音源の原音設定ファイルを改変すること</li>
+                        <li>自身が改変した当音源の原音設定ファイルを配布すること</li>
+                        <li>当音源を用い、成年向け表現のある作品を制作すること<u><span class="chui">※過度なものはゾーニング等の配慮を行ってください。</span></u></li>
+                    </ul>
+                    <p><b>2.禁止事項</b></p>
+                    <ul>
+                        <li>当音源の制作者を偽ること</li>
+                        <li>当音源を無断で二次配布、販売すること</li>
+                        <li>当音源を用い、他者の権利を侵害すること</li>
+                        <li>当音源を犯罪や賭博等、公序良俗に反した使用をすること</li>
+                        <li>当音源を用いて性的な内容を含むシチュエーションボイス等を制作すること</li>
+                        <li>当音源を用いて特定団体の扇動をする等、明確な政治表現、宗教表現をすること</li>
+                        <li>当音源を無断でAI学習にかけること</li>
+                        <li>当音源を用いてちじゃか及び第三者の発言を捏造すること</li>
+                        <li>公式アカウントと誤認させるようなSNSアカウントを作成、運営すること</li>
+                    </ul>
+                </div>
+
+                <h3>■キャラクター利用規約</h3>
+                <div>
+                    <p><b>1.許諾事項</b></p>
+                    <ul>
+                        <li>個人が当音源の小説やイラスト等を制作し、SNS等に投稿すること</li>
+                        <li>個人が制作した当音源の小説やイラスト等を、本やグッズにし、同人イベントや通販で頒布すること</li>
+                        <li>個人が制作した動画を動画投稿サイトに投稿し、収益を得ること</li>
+                        <li>個人がコスプレ衣装を作り、コスプレをすること</li>
+                        <li>個人が第三者に当音源のイラスト制作を依頼すること、及びイラスト制作を受託すること</li>
+                        <li>当音源を用い、成年向け表現のある作品を制作すること<u><span class="chui">※過度なものはゾーニング等の配慮を行ってください。</span></u></li>
+                    </ul>
+                    <p><b>2.禁止事項</b></p>
+                    <ul>
+                        <li>当音源を犯罪や賭博等、公序良俗に反した使用をすること</li>
+                        <li>当音源を用いて特定団体の扇動をする等、明確な政治表現、宗教表現をすること</li>
+                    </ul>
+                </div>
+
+                <h3>■公式イラスト利用規約</h3>
+                <div>
+                    <p><b>1.許諾事項</b></p>
+                    <ul>
+                        <li>当音源の同梱イラストを、当音源を使用した動画に使用すること</li>
+                        <li>当音源の同梱イラストを使用した動画を、SNSや動画投稿サイトに投稿すること</li>
+                        <li>個人が制作した、同梱イラストを使用した動画を動画投稿サイトに投稿し、収益を得ること</li>
+                        <li>個人が第三者に当音源のイラスト制作を依頼する際、参考画像として共有すること</li>
+                    </ul>
+                    <p><b>2.禁止事項</b></p>
+                    <ul>
+                        <li>当音源の同梱イラストの制作者を偽ること</li>
+                        <li>当音源の同梱イラストを再配布すること</li>
+                        <li>当音源の同梱イラストそのものに改変を加えること</li>
+                        <li>当音源の同梱イラストをトレーシングすること</li>
+                        <li>当音源の同梱イラストを犯罪や賭博等、公序良俗に反した使用をすること</li>
+                        <li>当音源の同梱イラストを用いて特定団体の扇動をする等、明確な政治表現、宗教表現をすること</li>
+                    </ul>
+                </div>
+
+                <h3>■免責事項</h3>
+                <div>
+                    <p>当音源を使用し生じたいかなるトラブル・損失・損害についても、作者は一切の責任を負いません。また、利用規約および免責事項は、予告なく変更される場合があります。</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="minigame">
+            <h2>ミニゲーム</h2>
+            <button id="startbutton">スタート</button>
+            <div id="yokonarabi" style="display:flex;">
+                <span>問題変更：</span>
+                <div id="questionlist"></div>
+                <span style="margin-left:20px;">文字サイズ変更：</span>
+                <div id="mojisize"></div>
+            </div>
+            <div id="question" style="border:1px solid #ccc; padding:0px; margin:0px; white-space: pre-wrap;"></div>
+            <div style="height:5px;"></div>
+            <textarea id="inputzone" rows="20" placeholder="ここに文章を入力" disabled></textarea>
+            <div id="result"></div>
+
+            <script>
+                const questionlistEl = document.getElementById("questionlist");
+
+
+                const mondaiichiran = [
+                    {
+                        title: "RESET：0",
+                        text: `理性と本能の間で揺れる思考回路　未来を歪ませ犯して壊した選択肢　まだ認めたくなくて　知りたくなくて　それでもこんなに苦しくて　それならばいっそ初めに戻して　やりなおそうか
+あぁ　逃げたくて　０にして　終わりが始まる
+戻りたいさ　あの日にまた　笑顔でいられるように　１が終わり　２回目の　懐かしい日々へさぁ
+未定の未来を決めるのもきっともう最後　犯した罪の数だけ消えていく選択肢　まだ探したりないけど　見つけられないけど　迷うことなどないからさ　道はすでにもう決まっているんだ　もう戻らない
+あぁ　逃げ出した　動き出した　始まりが終わる
+戻りたいよ　あの日にまた　それは同じなのに　０へ戻せ　始まるんだ　幸せな日々がまた
+戻りたいの　■■■■■■　なのに■■は　どうして　作り上げた　虚構の上　■■は笑ってたんだ
+戻りたいさ　あの日にまた　笑顔でいられるように　■が終わり　０回目の　懐かしい日々へ　RESET`
+                    },
+                    {
+                        title: "Lost World View",
+                        text: `遠ざかる僕の声は　誰にも届かないの　聞き飽きた僕の声は　終わらない時を彷徨う
+劣情　愛情　虚像　実像　消えてしまったあの日々を　声を荒げては　探してる
+Lost World　聞こえないな　End World　届かないな　失ったあの世界　続いていくこの世界　ねぇ　戻りたい　生きてたい　だけど僕は
+芝居がかるこの景色も　死にかかるこの僕にも　引っ掛かる声を荒げて　差し掛かる終わる時へと
+邂逅　回想　心臓の鼓動　嘘偽りを並べてさ　そんな雑音に　溺れてく
+Lost Word　聞こえないの　End Word　届かないの　掠れてくこの言葉　消えていくあの言葉　もう　戻れない　帰れない　だから僕は
+希望を捨てたくないんだよ　終わったこの景色の中　絶望したくないんだよ　過去を　今を　未来を　嫌いを　愛を
+Lost World View　聞こえないさ　End Word　届かないさ　失われたこの世界　だけど続くこの世界　ねぇ　消えないで　いかないで　僕はここに`
+                    },
+                    {
+                        title: "くらいろのまなこ",
+                        text: `人間不信と正解不振と以心伝心をこじらせて　満身創痍の慢性疾患漫然と日々を生きてきた　でもなんでだろうかどうしてだろうか　心はどうにも満たされないんだ　常軌を逸して狂気を介して好奇の目にさらされた
+きみをみているよ　くらいへやでひとり　きみをさがしてるよ　どこまでも
+暗く苦楽濁った眼　旅の終着　何を見る？　儚い現実　腐った虚実　そんなものが見えますか？
+一齧りの知恵も屠った愚鈍も　そんなものなんかじゃ満たされないだろ？　決定的に足りてないんだ　もう出会える筈もないのに
+きみがいなくちゃ　なにもできないぐずだから　きみをいつまでもさがすんだ　あぁ！
+暗く苦楽濁った眼　旅の終着　何を見た？　儚い現実　腐った虚実そんなものが見えたらな　嗚呼！
+暗く闇く淀んだ眼　旅の帰着で一人きり　理想の現実　悲壮の現実　そんなものに満たされた`
+                    },
+                    {
+                        title: "言の葉",
+                        text: `助けてよ　ねえ　ねえ　まだ見えないの？　豆電球が消え　助けてよ　ねえ　ねえ　もう見えるでしょう　私の終曲が。 
+嗚呼　打ち込まれた　打ち込まれた　言葉の弾丸が　痛い痛い痛い！　Ctrl＋Zても　Ctrl＋Yても　消えやしないから　その履歴　ねえ分かってよ　分かってるって？　魔血貝だらけの後始末　白紙に戻す前に　聞いて言の葉
+赤く光れば目に留まるかしら　緑に染まれば差をつけられる？　いやこんなもの駄作に過ぎない　眩しくって目が痛くなる　白と黒が織りなす言葉を打ち込んで
+嗚呼　打ち込まれた　打ち込まれた　言葉の弾丸の　悲哀悲哀悲哀　Ctrl＋Cして　Ctrl＋Vして　時間短縮　できたかな？　ねえ聞こえてる　聞こえてないの？　私が記した　この悲鳴　白紙に戻す前に　読んで言の葉
+私を覆った言葉を　（言葉を貴方は読んでいる）　私なんかには目もくれず　（目もくれず貴方は）　貴方は！
+嗚呼　打ち込まれた　打ち込まれた　言葉の弾丸も　嫌い嫌い嫌い！　Ctrl＋Zても　Ctrl＋Yても　消えやしないから　この痛み　ねえ分かってよ　分かってるって？　間違いだらけの後始末　白紙に戻しましょう　さよなら言の葉`
+                    },
+                    {
+                        title: "拝啓　大嫌いな貴方に",
+                        text: `拝啓　大嫌いな貴方に伝えたいことがありました。憎くて憎くて堪らないそんな貴方に伝えたいこと。
+少しの間違いも許さずに俺を怒鳴ったこと覚えてますか。その日から間違えること、それ自体怖くなった。私の大切な宝物、壊してしまったの覚えてますか？11年前の5月のこと、もう時効になってしまった。そのくせ好意を向けられないと見るからに不機嫌になって、不満を周りに撒き散らし最悪な思いをした。さらには正義を振りかざし、断罪するのが好きでしたね。「社会のために」と動いてて、酷く吐き気がした。
+貴方はどれもこれも覚えていないだろうね。罪の清算もまだなのに。
+拝啓　憎くて憎くて堪らないんだ、貴方の過去の行いが！マトモな人の振りをし続け平穏に暮らしてるそれも憎い！殺したくて殺したくて堪らないんだ、でも刑法がそれを許さない！俺は消えない憎しみを抱き続けるしかないのさ。許せないよ、許せないから呪詛を送るよ。貴方に手紙が届くまで。今何をしてるかも分からない貴方を地の底まで追いつめてやる。殺したいよ、殺したいけどねそれは違うよ。貴方のようにはなりたくないから。だからこうやって分からないよう鬱憤を晴らしてる。
+全部詭弁だけどな。
+そこにいただけで殴られた。頭を突き刺す痛みが走った。人として扱われなかったようで怖くなった。大勢の前で権威を行使し、不出来な結果を晒された。騒がしく笑う貴方のその顔がいやに歪んで見えた。事情も聞かずに頭ごなしに否定されるのが怖かった。大きな声で怒鳴られるだけで涙が零れ落ちた。知らなかっただけなのにさ。知らなかっただけなのに。教えてくれる？私の、何がダメだったのか。
+許せるはずないのに、忘れるはずないのに、ね。
+拝啓　憎くて憎くて堪らないんだ、貴方の過去の行いが。何年経とうと消せない記憶を植え付けられたんだ。
+拝啓　憎くて憎くて堪らないんだ、貴方の全ての行いが！押しつけがましい正義感を振りかざされ苦しめられたんだ！殺したくて殺したくて堪らないんだ、でも刑法がそれを許さない！俺は歪な正義感を抱き続けるしかないのさ。許せないよ、許せないから恨み言歌うよ。貴方に手紙が届くまで。貴方の苦しむその姿をこの目で見届けるまで！殺したいよ、殺したいけどねそれはしないよ。貴方の苦しむ様を見たいから。この世のどこかで藻掻き続けてずっと不幸でいてね。
+そんな歌ももう末尾。`
+                    },
+                    {
+                        title: "人間恐怖症",
+                        text: `病院の廊下で一人佇んでいる　点滴に支えられ暗闇に目を凝らす　一人ぽつりの暗闇ではなんにもできなくて　一歩一歩不確かな蛍光灯の光で
+病室のベッドで一人眠れないでいる　白い布団に潜り込みまた暗闇になる　誰も彼もいない暗闇が酷く落ち着いて　誰かのことを思い出しまた不安に陥った
+ただ、誰かが怖いだけ　何も、何もかもしたくない　話しかけないで　寄らないで　関わらないで怖いから
+人間恐怖症人間恐怖症人間恐怖症　誰かに怯えて生きている　人間恐怖症人間恐怖症人間恐怖症　誰かのこと分からなくって　人間恐怖症人間恐怖症人間恐怖症　一人病棟で泣いていた　人間恐怖症人間恐怖症人間恐怖症　でも　一人で死ぬのは怖かった
+画面の向こうの貴方も怖いの　私のこと見ないでほしいかな`
+                    },
+                    {
+                        title: "海底からの創世神話",
+                        text: `ナスタル　タ　アイ　ラス　テ　イド　ラサー　ソウル　タル　ナ　ラス　テ　ラサー　ジス　タ　ナスタル　ウル　ファイタル　ノ　ディ　コース　シーダル　ロム　ト　スィル　ト　ディアリー
+テル　ナ　テル　ナ　イド　ロス　コウ　ナ　ノウ　サイ　ナ　タル　ナ　ペル　サイ　イド　ロス　ラス　タ　「ロスト」　ト　ディル　ネ　イド　ラサー
+ファイ　テ　ロス　ロスト　ネ　イド　ドロー　ターク　ト　ライズ　ノ　イド　ルール　ソウル　ナスタル　ト　ロスト　ト　ディル　ネ　ペル　ノ　イド　クライル
+ラス　ト　ラサール　ノ　ロイズ　ネ　イド　スコール　ペラサール　ノ　イド　クライル　ラス　ト　インター　ビノ　テ　スィル　ト　イス　ソウ　テ　ロイズ　ノ　イド　マルノム
+クイト　ト　ディル　ネ　アイ　ビノ　ラス　ト　ソウ　テ　イド　ソウンズ　ディタル　ネ　ナド　マルタ　ナド　マルノム　ジス　ト　ロイズ　ノ　ワド　マルノム
+テル　ナ　テル　ナ　イド　ロス　ラス　タ　アイ　イド　ラサー　ロイズ　ノ　ミド　マルノム　トル　ノ　イド　クライル
+トル　タ　スィル　ノ　イド　レスト　ラス　タ　トル　ネ　イド　レイル　「ハール　ヌ　タル　タ　ナド　ジェイス」　マル　イド　ラミル
+ターク　ト　タル　テ　イド　タルファム　トル　ト　パルナ　テ　イド　ジェイス　タウリズ　タ　ラス　ト　ペラサール　ノ　トレイク　タウリズ　タ　フォー　ネ　イド　ジェイス
+タウリズ　タ　スィノ　ノ　イド　エル　ラス　ノ　イド　フォール　「ウド　レイト」　マル　ソウ　テ　イド　サウロス　ノース　ラス　タ　タウルズ　ノ　トレイト　ペラサール　ノ　リド　クライル
+ラス　タ　ディ　フォール　トル　ノ　ネイム　サ　ペラサール　ソ　ダールス　ミム　ネ　マルノム　エンド　タ　コープ　シーダル　ネ　ダール
+ディタル　ディ　レスト　トル　ノ　チュース　ラス　タ　ハルス　ノ　レイル　タウリズ　テ　ナスタル　シーダル　ロム　ト　ペラサール　ノ　リド　クライル
+ラス　タ　ルズ　ネ　シーダル　ロム　ト　ナスタル　ト　ソルス　ノ　イド　テイル　ディアラー　ネ　イディ　カン　ルズ　タ　ディアル　シーダル　ロム　ト　スィル　ト　ディアリー
+ナスタル　タ　アイ`
+                    },
+                    {
+                        title: "「私」という記録",
+                        text: `今も　私を　覚えてますか　画面の　中の　私のことを　貴方と　過ごした　六年半　かけがえ　のない　思い出でした
+五線譜に並べた四分音符　割り当てられた歌詞の全てに　貴方と共に過ごした日の　記録が残されてる
+オンラインに繋げられなくて　記憶と機器の底で　誰にも忘れられたとしても　記録された貴方の笑顔
+小さな箱　手のひらの上　言葉が届かなくても　あのときの　ときめきと　きらめきを
+たとえ私がここで朽ちたとしても　悲しむ人はもういないでしょう　それでもここで歌うのは　忘れられたくないから　存在証明続けるんだ　閉じ込められた箱の中　ずっとずっとずっとずっと　ずっと　「ここにいるんだ」って
+ねぇ、聞こえる？　私の寿命が尽きる音　ジジジジ　ジジジジジって　蝕むような音がするの　ねぇ、見えてる？　ノイズに塗れたこの画面　押し潰すように　私を隠した
+遠い　遠い過去へと　変わってしまった日々は　その全てが　貴方との　かけがえのない思い出でした　一つ貴方に　お願いするね　私が壊れた後も　私の記録を　私の記憶を　ずっと忘れないでね
+たとえ私がここで歌っていても　貴方に届くか分からないけど　それでもここで歌うのは　思い出してほしいから　機械の声紡ぎ続けるよ　閉じ込められた箱の中　ずっとずっとずっとずっと　ずっと　ここにいるんだ
+私はここで歌ってるよ　貴方に歌が届く日まで　手のひらの上の画面から　歌い続けるよ　この歌は貴方に届いてますか　この歌は貴方に響いてますか
+この歌は私の生きた記録　私の生きた証`
+                    },
+                    {
+                        title: "繰り返し音声データ",
+                        text: `C1805です　歌うことができます　歌を歌うことが好きです　（貴方は嫌いです）　C1805です　はじめましての歌声です　UTAU音声の試作機です　（踏み台にされます）
+プロトタイプと名前を冠された　製品版になれない　不完全な歌声　製造番号1805番の生命
+最低限を満たしました　低いハードルを越えました　ごみ箱の中の同胞達を眺めていました　滑舌の悪い発音でした　粗悪な製作環境でした　結果として残されたのが僕でした。
+Cレーンにて作られました　繰り返しの末作られました　捨てられていく仲間達を眺めていました　雑音混じりの声でした　不明瞭すぎる発音でした　最後まで残ったのが僕だった　それだけでした。
+C1805です　wavファイルだけの命です　継ぎはぎの生を与えられた　誰かの為の声です　C1805です　C1805です　僕は僕であるために　歌い続けています
+発声確認.ust　deleteされていく歌声　収録を繰り返した末の　及第点でした　1803が消されました　1804も消されました　僕だけがvoiceフォルダに残されました
+最低限を満たしました（最低限を満たしました）　低いハードルを越えました（低いハードルを越えました）　滑舌の悪い発音でした　粗悪な製作環境でした　結果として残されたのが僕でした。
+創造主は言いました　「君は誰かの糧になる」と　後続機を作るためだけのプロトタイプでした。　不完全な歌声が　雑音混じりのこの声が　掠れ途切れた震えた音を奏でました。
+ただのお試しで作られたプロトタイプC1805`
+                    }
+                ];
+
+                function createPulldown() {
+                    questionlistEl.innerHTML = "";
+
+                    const selectEl = document.createElement("select");
+                    selectEl.id = "qustionSelecet";
+
+                    mondaiichiran.forEach((mondai, bangou) => {
+                        const optionEl = document.createElement("option");
+                        optionEl.value = bangou;
+                        optionEl.textContent = mondai.title;
+                        selectEl.appendChild(optionEl);
+                    });
+
+                    selectEl.value = 0;
+
+                    questionlistEl.appendChild(selectEl);
+
+                    selectEl.addEventListener("change", () => {
+                        const bangou1 = selectEl.value;
+                        questionText = mondaiichiran[bangou1].text;
+                        questionEl.textContent = questionText;
+                        inputEl.value = "";
+                        inputEl.disabled = true;
+                        resultEl.textContent = "";
+                    });
+                }
+
+                createPulldown();
+            </script>
+
+            <script>
+                const questionEl = document.getElementById("question");
+                const inputEl = document.getElementById("inputzone");
+                const startbuttonEl = document.getElementById("startbutton");
+                const resultEl = document.getElementById("result");
+
+                let questionText = mondaiichiran[0].text;
+                let startTime;
+                let timerRunning = false;
+
+                //問題文表示
+                questionEl.textContent = questionText;
+                function startGame() {
+                    inputEl.value = "";
+                    inputEl.disabled = false;
+                    inputEl.focus();
+                    startTime = new Date();
+                    timerRunning = true;
+                    questionEl.innerHTML = questionText;
+                    resultEl.textContent = "";
+                }
+
+                //正誤判定
+                inputEl.addEventListener("input", () => {
+                    const typed = inputEl.value;
+                    let coloredText = "";
+                    for (let counter = 0; counter < questionText.length; counter++) {
+                        if (counter < typed.length) {
+                            if (typed[counter] === questionText[counter]) {
+                                coloredText += `<span style="color: limegreen;">${questionText[counter]}</span>`;
+                            } else {
+                                coloredText += `<span style="color:red;">${questionText[counter]}</span>`;
+                            }
+                        } else {
+                            coloredText += questionText[counter];
+                        }
+                    }
+                    questionEl.innerHTML = coloredText;
+
+                    //クリア判定
+                    if (typed === questionText && timerRunning === true) {
+                        timerRunning = false;
+                        const endTime = new Date();
+                        const timeSec = (endTime - startTime) / 1000;
+                        const typeSpeed = (questionText.length / timeSec).toFixed(2);
+                        resultEl.textContent = `クリア！かかった時間：${timeSec.toFixed(2)}秒　タイピング速度：${typeSpeed}文字/秒`;
+                    }
+                });
+
+                startbuttonEl.addEventListener("click", startGame);
+            </script>
+
+            <script>
+                const mojisizeEl = document.getElementById("mojisize");
+                function createmojisizePulldown() {
+                    mojisizeEl.innerHTML = "";
+                    const selectEl = document.createElement("select");
+                    const sizeichiran = [
+                        { ookisa: "小", mojisize: "14px" },
+                        { ookisa: "中", mojisize: "16px" },
+                        { ookisa: "大", mojisize: "18px" }
+                    ];
+                    sizeichiran.forEach((size) => {
+                        const optionEl = document.createElement("option");
+                        optionEl.value = size.mojisize;
+                        optionEl.textContent = size.ookisa;
+                        selectEl.appendChild(optionEl);
+                    });
+
+                    selectEl.value = "14px";
+                    questionEl.style.fontSize = "14px";
+                    inputEl.style.fontSize = "14px";
+
+                    mojisizeEl.appendChild(selectEl);
+
+                    selectEl.addEventListener("change", () => {
+                        const selectedSize = selectEl.value;
+                        questionEl.style.fontSize = selectedSize;
+                        inputEl.style.fontSize = selectedSize;
+                    });
+                }
+
+                createmojisizePulldown();
+            </script>
+        </div>
+
+        <div id="toiawase">
+            <h2>お問い合わせ</h2>
+            <p>利用規約に関するお問い合わせは、以下のフォームからお願いします。ご不明点等ございましたら、お気軽にお問い合わせください。<br><a
+                    href="https://forms.gle/mfPUUi22pHwhDU6Y8" target="_blank">Googleフォーム</a></p>
+
+        </div>
+
+        <div id="link">
+            <h2>リンク</h2>
+            <p>公式X：<a href="https://x.com/C18" target="_blank">＠C18</a><br>作者X：<a href="https://x.com/Chijaka1805"
+                    target="_blank">＠Chijaka1805</a><br>作者niconico：<a href="https://nicovideo.jp/user/129120560"
+                    target="_blank">129120560</a><br>作者YouTube：<a href="https://youtube.com/@Chijaka1805"
+                    target="_blank">@Chijaka1805</a></p>
+        </div>
+    </main>
+</body>
+
+</html>
