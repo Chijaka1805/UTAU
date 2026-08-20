@@ -50,6 +50,7 @@
                         ruby: "",
                         face: "Proto-C1805-icon.png",
                         body: "Proto-C1805.png",
+                        downloadlink: "https://bowlroll.net/file/358861",
                         samplevoice: "Proto-C1805.wav",
                         demonico: "https://nicovideo.jp/user/129120560",
                         demotube: "https://youtube.com/@Chijaka1805",
@@ -100,6 +101,9 @@
                                     <audio controls src="${selectedUTAU.samplevoice}"></audio>
                                     <p>公式デモソング：<a href="${selectedUTAU.demonico}">niconico</a> <a href="${selectedUTAU.demotube}">YouTube</a></p>
                                 </figure>
+                                <div>
+                                    <button onclick="location.href='${selectedUTAU.downloadlink}'">ダウンロードサイトへ</button>
+                                </div>
                             </div>
                         </div>
                         `;
