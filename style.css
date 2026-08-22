@@ -77,7 +77,7 @@ h1{
 .koshin{
     margin:0.3em;
     display:flex;
-    gap:0.3em;
+    gap:0.5em;
 }
 
 @media(max-width:800px){
