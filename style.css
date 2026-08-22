@@ -74,6 +74,10 @@ h1{
     overflow:scroll;
 }
 
+.koshin{
+    margin:0;
+}
+
 @media(max-width:800px){
     #gaiyoudetail{
         flex-direction:column;
