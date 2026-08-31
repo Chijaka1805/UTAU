@@ -71,7 +71,7 @@ h1{
     width:50%;
     height:150px;
     border:solid 1px darkgray;
-    overflow:scroll;
+    overflow-y:scroll;
 }
 
 .koshin{
