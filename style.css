@@ -63,8 +63,13 @@ h1{
     text-decoration:none;
 }
 
+
 #gaiyoudetail{
     display:flex;
+}
+
+#gaiyoudetail>p{
+    margin:0;
 }
 
 #rireki{
