@@ -80,7 +80,7 @@ h1{
     gap:0.5em;
 }
 
-@media(max-width:800px){
+@media(max-width:768px){
     #gaiyoudetail{
         flex-direction:column;
     }
@@ -153,7 +153,7 @@ h1{
     align-items:flex-start;
 }
 
-@media(max-width:800px){
+@media(max-width:768px){
     .UTAUdetailnakami{
         flex-direction:column;
     }
