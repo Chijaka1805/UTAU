@@ -209,10 +209,13 @@ button:active{
     border-top-color:darkslategray;
 }
 
-
 #inputzone,#question{
     width:100%;
     white-space: pre-wrap;
+}
+
+#inputzone{
+    resize:none;
 }
 
 .chui{
