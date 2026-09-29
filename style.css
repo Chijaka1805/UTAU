@@ -158,17 +158,21 @@ h1{
     align-items:flex-start;
 }
 
-@media(max-width:768px){
-    .UTAUdetailnakami{
-        flex-direction:column;
-    }
-}
-
 .UTAUdetailnakami img{
     height:80vh;
     width: auto;
     position:relative;
     margin-bottom: 0;
+}
+
+@media(max-width:768px){
+    .UTAUdetailnakami{
+        flex-direction:column;
+    }
+    .UTAUdetailnakami img{
+        max-width:100%;
+        height:auto;
+    }
 }
 
 .UTAUtext h3{
